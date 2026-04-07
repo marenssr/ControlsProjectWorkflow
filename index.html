@@ -611,6 +611,29 @@
     display: none;
   }
 
+  .welcome-disclaimer {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 32px;
+    max-width: 460px;
+    background: rgba(0,0,0,0.03);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .disclaimer-icon {
+    color: var(--text-dim);
+    font-size: 13px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
   /* scrollbar */
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: transparent; }
@@ -621,6 +644,7 @@
 
 <header>
   <div class="header-left">
+    <div class="logo-mark">CE</div>
     <span class="header-title">Expected Controls Project Workflow</span>
   </div>
   <div class="header-right">
@@ -631,10 +655,24 @@
   </div>
 </header>
 
+<div class="timeline-bar">
+  <div class="timeline-label">Timeline</div>
+  <div class="timeline-track">
+    <div class="timeline-segment design"></div>
+    <div class="timeline-segment build"></div>
+    <div class="timeline-segment commission"></div>
+  </div>
+  <div class="timeline-legend">
+    <div class="tl-item"><div class="tl-dot" style="background: var(--design)"></div>Design</div>
+    <div class="tl-item"><div class="tl-dot" style="background: var(--build)"></div>Build</div>
+    <div class="tl-item"><div class="tl-dot" style="background: var(--commission)"></div>Commission</div>
+  </div>
+</div>
+
 <div class="stats-row">
   <div class="stat">
     <div class="stat-num">39</div>
-    <div class="stat-label">Total Tasks in the Workflow</div>
+    <div class="stat-label">Total Tasks in Workflow</div>
   </div>
   <div class="stat">
     <div class="stat-num" style="color: var(--design)">27</div>
@@ -690,12 +728,12 @@
 
   <div class="content" id="content">
     <div class="welcome" id="welcome">
-      <div class="welcome-pre">Rev 1.6 · Updated 11/21/25</div>
+      <div class="welcome-pre">Last Updated: March 14, 2026</div>
       <div class="welcome-title">Expected Controls<br>Project Workflow</div>
-      <div class="welcome-sub">A complete reference for controls and electrical-related tasks, organized by phase. Select any task in the sidebar to view details, dependencies, owners, and duration estimates.</div>
+      <div class="welcome-sub">A complete reference for controls and electrical related tasks, organized by phase. Select any task in the sidebar to view details, dependencies, owners, and duration estimates.</div>
       <div class="welcome-disclaimer">
         <span class="disclaimer-icon">ℹ︎</span>
-        This workflow is a guide, not a strict checklist — not every task applies to every project, and the order may vary depending on scope and team structure.
+        This workflow is a guide, not a strict checklist. Not every task applies to every project, and the order may vary depending on scope and team structure.
       </div>
       <div class="phase-cards">
         <div class="phase-card" onclick="filterPhase('design', document.querySelector('.filter-btn.design'))">
@@ -723,7 +761,7 @@
     </div>
   </div>
 </div>
-  
+
 <script>
 const tasks = [
   { id:"3.1",num:"3.1",phase:"design",title:"Requirements Definition",owner:"Lead",ownerClass:"owner-lead",duration:"—",blockedBy:[],blocking:["3.2"],description:"Initial scoping of the project. The lead defines overall requirements before controls work begins in earnest.",notes:null},
