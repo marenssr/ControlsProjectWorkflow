@@ -97,18 +97,43 @@
   .detail-description p:last-child { margin-bottom: 0; }
   .detail-notes { background: rgba(0,113,227,0.04); border: 1px solid rgba(0,113,227,0.15); border-radius: var(--radius-sm); border-left: 3px solid var(--accent); padding: 14px 18px; font-size: 13px; line-height: 1.65; color: var(--text-mid); margin-bottom: 24px; }
   .section-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-dim); margin-bottom: 8px; }
-  .welcome { padding: 60px 48px; display: block; max-width: 700px; }
+
+  /* WELCOME — full width, broken paragraphs */
+  .welcome { padding: 52px 48px 40px; display: block; }
   .welcome-pre { font-family: var(--font-mono); font-size: 11px; color: var(--text-dim); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px; }
-  .welcome-title { font-size: 36px; font-weight: 600; color: var(--text-bright); line-height: 1.15; margin-bottom: 14px; letter-spacing: -0.025em; }
-  .welcome-sub { font-size: 15px; color: var(--text-mid); max-width: 460px; line-height: 1.65; margin-bottom: 20px; font-weight: 300; }
-  .welcome-disclaimer { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 32px; max-width: 460px; background: rgba(0,0,0,0.03); border: 1px solid var(--border-light); border-radius: var(--radius-sm); padding: 12px 14px; font-size: 13px; color: var(--text-mid); line-height: 1.6; font-weight: 300; }
+  .welcome-title { font-size: 36px; font-weight: 600; color: var(--text-bright); line-height: 1.15; margin-bottom: 24px; letter-spacing: -0.025em; }
+  .welcome-body { margin-bottom: 20px; }
+  .welcome-body p { font-size: 15px; color: var(--text-mid); line-height: 1.7; font-weight: 300; margin-bottom: 14px; max-width: none; }
+  .welcome-body p:last-child { margin-bottom: 0; }
+  .welcome-disclaimer { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 28px; background: rgba(0,0,0,0.03); border: 1px solid var(--border-light); border-radius: var(--radius-sm); padding: 12px 14px; font-size: 13px; color: var(--text-mid); line-height: 1.6; font-weight: 300; }
   .disclaimer-icon { color: var(--text-dim); font-size: 13px; flex-shrink: 0; margin-top: 1px; }
-  .phase-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 560px; }
-  .phase-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); padding: 20px; cursor: pointer; transition: all 0.2s ease; box-shadow: var(--shadow-sm); }
+
+  /* PHASE CARDS — compact horizontal rows */
+  .phase-cards { display: flex; flex-direction: column; gap: 8px; max-width: 520px; }
+  .phase-card {
+    background: var(--surface);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
   .phase-card:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
-  .phase-card-icon { width: 32px; height: 32px; border-radius: 8px; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; }
-  .phase-card-name { font-size: 13px; font-weight: 600; color: var(--text-bright); margin-bottom: 2px; letter-spacing: -0.01em; }
+  .phase-card-icon {
+    width: 28px; height: 28px;
+    border-radius: 7px;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .phase-card-text { display: flex; align-items: baseline; gap: 8px; }
+  .phase-card-name { font-size: 13px; font-weight: 600; color: var(--text-bright); letter-spacing: -0.01em; }
   .phase-card-count { font-size: 12px; color: var(--text-dim); }
+
+  /* OWNER / MISC */
   .owner-controls { background: rgba(0,113,227,0.08); color: #0060c0; border: 1px solid rgba(0,113,227,0.2); }
   .owner-lead { background: rgba(0,0,0,0.05); color: #3a3a3c; border: 1px solid rgba(0,0,0,0.12); }
   .owner-mech { background: rgba(0,113,227,0.04); color: #4a6e9a; border: 1px solid rgba(0,113,227,0.15); }
@@ -172,8 +197,12 @@
   <div class="content" id="content">
     <div class="welcome" id="welcome">
       <div class="welcome-pre">Last Updated: March 14, 2026</div>
-      <div class="welcome-title">Expected Controls<br>Project Workflow</div>
-      <div class="welcome-sub"> This is a playbook for executing controls projects from start to finish. It covers the full lifecycle across three phases: Design (requirements, device index, motor selection, panel design, safety analysis via FMEA/HAZOP, PLC/HMI setup), Build (procurement, panel fabrication, field wiring, component kitting), and Commissioning (IO check, safety buyoff, motor tuning, HMI completion).This guide includes a dependency mapped task list with ownership clearly assigned across controls engineers, mechanical engineers, software engineers, and the panel shop technicians. The goal is to standardize project execution, preventing repeated mistakes, and giving engineers a clear checklist to track progress on each new project. Select any task in the sidebar to view details, dependencies, owners, and duration estimates.</div>
+      <div class="welcome-title">Expected Controls Project Workflow</div>
+      <div class="welcome-body">
+        <p>This is a playbook for executing controls projects from start to finish, covering the full lifecycle across three phases: <strong>Design</strong> (requirements, device index, motor selection, panel design, safety analysis via FMEA/HAZOP, PLC/HMI setup), <strong>Build</strong> (procurement, panel fabrication, field wiring, component kitting), and <strong>Commissioning</strong> (IO check, safety buyoff, motor tuning, HMI completion).</p>
+        <p>This guide includes a dependency-mapped task list with ownership clearly assigned across controls engineers, mechanical engineers, software engineers, and panel shop technicians.</p>
+        <p>The goal is to standardize project execution, prevent repeated mistakes, and give engineers a clear checklist to track progress on each new project. Select any task in the sidebar to view details, dependencies, owners, and duration estimates.</p>
+      </div>
       <div class="welcome-disclaimer">
         <span class="disclaimer-icon">ℹ︎</span>
         This workflow is a guide, not a strict checklist. Not every task applies to every project, and the order may vary depending on scope and team structure.
@@ -181,28 +210,36 @@
       <div class="phase-cards">
         <div class="phase-card" onclick="filterPhase('design', document.querySelector('.filter-btn.design'))">
           <div class="phase-card-icon" style="background: rgba(0,113,227,0.1)">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="5" height="5" rx="1" fill="#0071e3"/><rect x="9" y="2" width="5" height="5" rx="1" fill="#0071e3" opacity="0.4"/><rect x="2" y="9" width="5" height="5" rx="1" fill="#0071e3" opacity="0.4"/><rect x="9" y="9" width="5" height="5" rx="1" fill="#0071e3" opacity="0.2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="5" height="5" rx="1" fill="#0071e3"/><rect x="9" y="2" width="5" height="5" rx="1" fill="#0071e3" opacity="0.4"/><rect x="2" y="9" width="5" height="5" rx="1" fill="#0071e3" opacity="0.4"/><rect x="9" y="9" width="5" height="5" rx="1" fill="#0071e3" opacity="0.2"/></svg>
           </div>
-          <div class="phase-card-name">Design</div><div class="phase-card-count">27 tasks</div>
+          <div class="phase-card-text">
+            <span class="phase-card-name">Design</span>
+            <span class="phase-card-count">27 tasks</span>
+          </div>
         </div>
         <div class="phase-card" onclick="filterPhase('build', document.querySelector('.filter-btn.build'))">
           <div class="phase-card-icon" style="background: rgba(110,110,115,0.1)">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L8 3L13 13H3Z" fill="#6e6e73" opacity="0.9"/></svg>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 13L8 3L13 13H3Z" fill="#6e6e73" opacity="0.9"/></svg>
           </div>
-          <div class="phase-card-name">Build</div><div class="phase-card-count">7 tasks</div>
+          <div class="phase-card-text">
+            <span class="phase-card-name">Build</span>
+            <span class="phase-card-count">7 tasks</span>
+          </div>
         </div>
         <div class="phase-card" onclick="filterPhase('commission', document.querySelector('.filter-btn.commission'))">
           <div class="phase-card-icon" style="background: rgba(174,174,178,0.15)">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5" fill="#9a9a9f" opacity="0.9"/><path d="M5.5 8L7 9.5L10.5 6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5" fill="#9a9a9f" opacity="0.9"/><path d="M5.5 8L7 9.5L10.5 6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <div class="phase-card-name">Commission</div><div class="phase-card-count">11 tasks</div>
+          <div class="phase-card-text">
+            <span class="phase-card-name">Commission</span>
+            <span class="phase-card-count">11 tasks</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 <script>
-// Design = 1.x | Build = 2.x | Commission = 3.x
 const tasks = [
   // DESIGN PHASE
   { id:"1.1",  num:"1.1",  phase:"design",     title:"Requirements Definition",              owner:"Lead",                       ownerClass:"owner-lead",     duration:"—",                                                                                   blockedBy:[],                     blocking:["1.2"],                               description:"Initial scoping of the project. The lead defines overall requirements before controls work begins in earnest.", notes:null },
